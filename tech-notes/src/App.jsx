@@ -18,6 +18,8 @@ export default function App() {
         },
       ];
     });
+
+    setMyNewItem("")
   }
 
   return (
@@ -31,21 +33,19 @@ export default function App() {
             name="item"
             id="item"
             placeholder="enter a new item..."
-            onChange={(myTestEvent) => setMyNewItem(myTestEvent.target.value)}
+            onChange={myTestEvent => setMyNewItem(myTestEvent.target.value)}
           />
-          <button className="btn" type="button">
-            Add
-          </button>
         </div>
+        <button className="btn" type="submit">Add</button>
       </form>
       <h1 className="header">Todo List</h1>
       <ul className="list">
-        {myTodos.map((todo) => {
+        {myTodos.map(todo => {
           return (
-            <li>
+            <li key={todo.id}>
               <label htmlFor="">
-                <input type="checkbox" name="" id="" />
-                Item 1
+                <input type="checkbox" name="" id="" checked={todo.completed}/>
+                {todo.title}
               </label>
               <button className="btn btn-danger" type="button">
                 Delete
